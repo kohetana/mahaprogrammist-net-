@@ -1,50 +1,56 @@
-﻿// 1labaaa.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
 /************************
- * Author: Kuchina M. A. *
- * Date  : 16.09.2026    *
- * Variant 2             *
- * Title : Lab 1         *
+ * Автор: Кучина Мария  *    
+ * Вариант 2            *
+ * Название : 1 лаба    *
  ************************/
 
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
 int main() {
-    
-    const double a = 0.52;
-    const double b = -3.552;
-    const double c = 3.24;
-    const double Pi = 3.14;
+	
+  double a;
+  double b;
+  double c;
+  const double Pi = 3.14; // Подлинная константа
+  const int precisionValue = 6; // Константа для точности вывода
+  const double degreeToRadian = Pi / 180.0; // Константа для перевода градусов в радианы
+  double P;
+  double g;
+  double arg;
+  double alpha;
+  double k;
+  double x1;
+  double x2;
+  double x3;
+	
+  cout << "Enter a: ";
+  cin >> a;
+  cout << "Enter b: ";
+  cin >> b;
+  cout << "Enter c: ";
+  cin >> c;
+	
+  P = b / a;
+  g = c / a;
 
-    double P;
-    double g;
-    double arg;
-    double alpha;
-    double k;
-    double x1;
-    double x2;
-    double x3;
+  arg = -g / (2.0 * sqrt(pow(-P / 3.0, 3.0)));
+  alpha = acos(arg);
 
-    
-    P = b / a;
-    g = c / a;
+  k = 2.0 * sqrt(-P / 3.0);
 
-    arg = -g / (2.0 * sqrt(pow(-P / 3.0, 3.0)));
-    alpha = acos(arg);
+  x1 = k * cos(alpha / 3.0);
+  x2 = -k * cos((alpha + Pi) / 3.0);
+  x3 = -k * cos((alpha - Pi) / 3.0);
 
-    k = 2.0 * sqrt(-P / 3.0);
+  cout.precision(precisionValue);
+  cout << fixed;
+  cout << "x1 = " << x1 << endl;
+  cout << "x2 = " << x2 << endl;
+  cout << "x3 = " << x3 << endl;
 
-    x1 = k * cos(alpha / 3.0);
-    x2 = -k * cos((alpha + Pi) / 3.0);
-    x3 = -k * cos((alpha - Pi) / 3.0);
-
-    
-    cout.precision(6);
-    cout << fixed;
-    cout << "x1 = " << x1 << endl
-        << "x2 = " << x2 << endl
-        << "x3 = " << x3 << endl;
-
-    return 0;
+  return 0;
 }
